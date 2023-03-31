@@ -1,0 +1,14 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    python --version
+    pip install -r requirements.txt
+    pytest
+  displayName: 'Test and Build'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
